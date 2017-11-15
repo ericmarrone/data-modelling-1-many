@@ -1,0 +1,53 @@
+## PART 4 answers
+
+1.
+SELECT * FROM author where name = 'Kara Melton';
+SELECT * FROM articles WHERE author_id = 8;
+
+2.
+SELECT * FROM provinces WHERE name = 'Ontario';
+SELECT * FROM cities WHERE province_id = 14;
+
+OR
+
+SELECT * FROM cities WHERE province_id = (SELECT id FROM provinces WHERE name = 'Ontario');
+
+3.
+SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor';
+SELECT name FROM authors WHERE id = 4;
+
+OR
+
+
+SELECT name FROM authors WHERE id = (SELECT author_id FROM articles WHERE title = 'Coding Bootcamps and Emotional Labor');
+
+4.
+
+SELECT DISTINCT(name) FROM provinces WHERE country_id = (SELECT id FROM countries WHERE name = 'Canada');
+
+5.
+
+SELECT COUNT(name) FROM persons WHERE residence_id = (SELECT id FROM residences WHERE address = '4740 McDermott Street');
+
+6.
+
+SELECT name FROM cities WHERE id = (SELECT city_id FROM residences WHERE address = '4740 McDermott Street');
+
+7.
+
+SELECT name FROM provinces WHERE id = (SELECT province_id FROM cities WHERE name = 'Ottawa');
+
+8.
+
+SELECT name FROM countries WHERE id = (SELECT country_id FROM provinces WHERE name = 'Ontario');
+
+9.
+
+SELECT residence_id FROM persons WHERE name = 'Destini Davis';
+SELECT city_id FROM residences WHERE id = 2;
+SELECT province_id FROM cities WHERE id = 8;
+SELECT country_id FROM provinces WHERE id = 14;
+SELECT name FROM countries WHERE id = 1;
+
+10.
+SELECT COUNT(id) FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Aditya Mukerjee');
